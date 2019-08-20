@@ -1,4 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
+require 'faraday'
 require 'yelp_request.rb'
 
 RSpec.describe "YelpRequests", type: :request do
