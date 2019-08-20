@@ -1,33 +1,7 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
 
-class RestaurantView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      restaurants: []
-    };
-  }
-  // https://reactjs.org/docs/react-component.html#componentdidmount
-  componentDidMount() {
-    fetch("http://localhost:3000")
-      .then(response => response.json())
-      .then(json => {
-        this.setState({ restaurants: json });
-      });
-  }
-  render() {
-    const restaurants = this.state.restaurants.map((restaurant, index) => (
-      <li className="restaurant" key={index}>
-        <span>{restaurant.name}</span>
-        <img src={restaurant.image_url} />
-      </li>
-    ));
-    // //debugger;
-    return <ul>{restaurants}</ul>;
-  }
-}
+import "./App.css";
+import RestaurantView from "./components/Restaurants";
 
 function App() {
   return (
