@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import superagent from "superagent";
 
 export default function CategoryPicker(props) {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    getCategories().then(setCategories);
+  });
+
   return (
     <div>
       <input
@@ -10,12 +16,17 @@ export default function CategoryPicker(props) {
         onChange={e => props.chooseCategory(e.target.value)}
       />
       <datalist id="fruits">
-        <option value="Apple" />
-        <option value="Orange" />
-        <option value="Peach" />
-        <option value="Melon" />
-        <option value="Strawberry" />
+        {categories.map(cat => (
+          <option key={cat.alias} value={cat.title} />
+        ))}
       </datalist>
     </div>
   );
+}
+
+function getCategories() {
+  const result = superagent
+    .get("http://localhost:3000/categories")
+    .then(res => res.body);
+  return result;
 }
