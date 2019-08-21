@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import superagent from "superagent";
 
 export default class Restaurant extends Component {
   constructor(props) {
@@ -9,7 +10,16 @@ export default class Restaurant extends Component {
   }
   // https://reactjs.org/docs/react-component.html#componentdidmount
   componentDidMount() {
-    getRestaurants().then(restaurants => this.setState({ restaurants }));
+    getRestaurants(this.props).then(restaurants =>
+      this.setState({ restaurants })
+    );
+  }
+  componentWillReceiveProps(newProps) {
+    if (this.props.searchLocation !== newProps.searchLocation) {
+      getRestaurants(newProps).then(restaurants =>
+        this.setState({ restaurants })
+      );
+    }
   }
 
   render() {
@@ -27,7 +37,11 @@ export default class Restaurant extends Component {
     );
   }
 }
-// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-function getRestaurants() {
-  return fetch("http://localhost:3000").then(response => response.json());
+// https://github.com/visionmedia/superagent
+function getRestaurants({ searchLocation }) {
+  const result = superagent
+    .get("http://localhost:3000")
+    .query({ location: searchLocation })
+    .then(res => res.body);
+  return result;
 }
