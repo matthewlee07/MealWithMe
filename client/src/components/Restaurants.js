@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class RestaurantView extends Component {
+export default class Restaurant extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +11,7 @@ export default class RestaurantView extends Component {
   componentDidMount() {
     getRestaurants().then(restaurants => this.setState({ restaurants }));
   }
+
   render() {
     const restaurants = this.state.restaurants.map((restaurant, index) => (
       <li className="restaurant" key={index}>
@@ -18,11 +19,10 @@ export default class RestaurantView extends Component {
         <img src={restaurant.image_url} />
       </li>
     ));
-    // //debugger;
     return <ul>{restaurants}</ul>;
   }
 }
-
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 function getRestaurants() {
   return fetch("http://localhost:3000").then(response => response.json());
 }

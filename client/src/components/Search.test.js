@@ -5,6 +5,7 @@ import Search from "./Search";
 
 // Enzyme installation https://airbnb.io/enzyme/docs/installation/index.html
 // https://airbnb.io/enzyme/docs/guides/jest.html
+// https://airbnb.io/enzyme/docs/api/shallow.html
 describe("it works", () => {
   it("restaurant", () => {
     shallow(<Search />);
