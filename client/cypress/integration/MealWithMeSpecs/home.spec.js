@@ -13,21 +13,26 @@ describe("Home page", () => {
   });
   it("returns queried city", () => {
     cy.server();
-    const search = "columbus";
+    const location = "columbus";
+    const category = "fast food";
     // https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies#article
-    cy.route(`http://localhost:3000/?location=${search}`, [
-      {
-        name: "A restaurant from Columbus",
-        image_url: "https://placekitten.com/600/600"
-      }
-    ]);
+    cy.route(
+      `http://localhost:3000/?location=${location}?category=${category}`,
+      [
+        {
+          name: "A restaurant from Columbus",
+          image_url: "https://placekitten.com/600/600"
+        }
+      ]
+    );
     cy.visit("http://localhost:3001");
 
-    cy.get(".search-location").type(search);
+    cy.get(".search-location").type(location);
+    cy.get(".search-category").type("fast food");
     cy.get("form").submit();
 
     // https://docs.cypress.io/api/commands/contains.html#Syntax
-    cy.contains(`The best restaurants in ${search}`);
+    cy.contains(`The best restaurants in ${location}`);
     cy.contains("A restaurant from Columbus");
   });
 });

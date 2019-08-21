@@ -15,7 +15,7 @@ export default class Restaurant extends Component {
     );
   }
   componentWillReceiveProps(newProps) {
-    if (this.props.searchLocation !== newProps.searchLocation) {
+    if (this.props.search !== newProps.search) {
       getRestaurants(newProps).then(restaurants =>
         this.setState({ restaurants })
       );
@@ -31,20 +31,20 @@ export default class Restaurant extends Component {
     ));
     return (
       <Fragment>
-        <h1>The best restaurants in {this.props.searchLocation}</h1>
+        <h1>The best restaurants in {this.props.search.location}</h1>
         <ul>{restaurants}</ul>
       </Fragment>
     );
   }
 }
 // https://github.com/visionmedia/superagent
-function getRestaurants({ searchLocation }) {
-  if (searchLocation === null || searchLocation.length === 0) {
-    searchLocation = "LA";
+function getRestaurants({ search: { location, category } }) {
+  if (location === null || location.length === 0) {
+    location = "LA";
   }
   const result = superagent
     .get("http://localhost:3000")
-    .query({ location: searchLocation })
+    .query({ location, category })
     .then(res => res.body);
   return result;
 }

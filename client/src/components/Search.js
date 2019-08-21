@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-
-function handleFormSubmit({ onLocationChanged, location }) {
+import CategoryPicker from "./CategoryPicker";
+function handleFormSubmit({ onSearchChanged, data }) {
   return e => {
     e.preventDefault();
-    onLocationChanged(location);
+    onSearchChanged(data);
   };
 }
 
 export default function Search(props) {
   const [location, changeLocation] = useState("");
+  const [category, chooseCategory] = useState("");
 
   return (
-    <form onSubmit={handleFormSubmit({ ...props, location })}>
+    <form
+      onSubmit={handleFormSubmit({ ...props, data: { location, category } })}
+    >
       <h1>Search location</h1>
       <input
         onChange={e => changeLocation(e.target.value)}
@@ -19,6 +22,8 @@ export default function Search(props) {
         name="location"
         className="search-location"
       />
+      <h2>Pick a category</h2>
+      <CategoryPicker chooseCategory={chooseCategory} />
     </form>
   );
 }

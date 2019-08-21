@@ -1,32 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import Restaurant from "./components/Restaurants";
 import Search from "./components/Search";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchLocation: ""
-    };
-  }
+function App(props) {
+  const [search, searchChanged] = useState({
+    location: "",
+    category: ""
+  });
 
-  onLocationChanged = searchLocation => {
-    this.setState({ searchLocation });
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">Meal With Me</header>
-        <main>
-          <Search onLocationChanged={this.onLocationChanged} />
-          <Restaurant searchLocation={this.state.searchLocation} />
-        </main>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <header className="App-header">Meal With Me</header>
+      <main>
+        <Search onSearchChanged={searchChanged} />
+        <Restaurant search={search} />
+      </main>
+    </div>
+  );
 }
 
 export default App;
