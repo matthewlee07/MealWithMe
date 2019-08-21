@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 export default class Restaurant extends Component {
   constructor(props) {
@@ -19,7 +19,12 @@ export default class Restaurant extends Component {
         <img src={restaurant.image_url} />
       </li>
     ));
-    return <ul>{restaurants}</ul>;
+    return (
+      <Fragment>
+        <h1>The best restaurants in {this.props.searchLocation}</h1>
+        <ul>{restaurants}</ul>
+      </Fragment>
+    );
   }
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch

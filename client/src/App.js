@@ -22,7 +22,7 @@ class App extends Component {
         <header className="App-header">Meal With Me</header>
         <main>
           <Search onLocationChanged={this.onLocationChanged} />
-          <Restaurant />
+          <Restaurant searchLocation={this.state.searchLocation} />
         </main>
       </div>
     );
