@@ -39,6 +39,9 @@ export default class Restaurant extends Component {
 }
 // https://github.com/visionmedia/superagent
 function getRestaurants({ searchLocation }) {
+  if (searchLocation === null || searchLocation.length === 0) {
+    searchLocation = "LA";
+  }
   const result = superagent
     .get("http://localhost:3000")
     .query({ location: searchLocation })
