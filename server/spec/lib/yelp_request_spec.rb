@@ -10,6 +10,12 @@ RSpec.describe "YelpRequests", type: :request do
       expect(response.body).to_not include('error')
       expect(response.status).to equal(200)
     end
+    it "can search for Italian places in LA" do
+      response = YelpRequest.new.search('LA', 'Italian')
+
+      expect(response.body).to_not include('error')
+      expect(response.status).to equal(200)
+    end
   end
 
   describe "#categories" do 
