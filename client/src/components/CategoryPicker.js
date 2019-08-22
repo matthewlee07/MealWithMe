@@ -5,7 +5,7 @@ export default function CategoryPicker(props) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     getCategories().then(setCategories);
-  });
+  }, []);
 
   return (
     <div>
