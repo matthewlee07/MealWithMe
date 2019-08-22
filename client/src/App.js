@@ -5,16 +5,20 @@ import Restaurant from "./components/Restaurants";
 import Search from "./components/Search";
 
 function App(props) {
-  const [search, searchChanged] = useState({
+  const [search, setSearch] = useState({
     location: "",
-    category: ""
+    category: "",
+    price: "",
+    rating: "",
+    url: "",
+    location: ""
   });
 
   return (
     <div className="App">
       <header className="App-header">Meal With Me</header>
       <main>
-        <Search onSearchChanged={searchChanged} />
+        <Search onSetSearch={setSearch} />
         <Restaurant search={search} />
       </main>
     </div>

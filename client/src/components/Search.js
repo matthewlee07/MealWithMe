@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import CategoryPicker from "./CategoryPicker";
-function handleFormSubmit({ onSearchChanged, data }) {
+
+function handleFormSubmit({ onSetSearch, data }) {
   return e => {
     e.preventDefault();
-    onSearchChanged(data);
+    onSetSearch(data);
   };
 }
 
-export default function Search(props) {
+export default function Search({ onSetSearch }) {
   const [location, changeLocation] = useState("");
   const [category, chooseCategory] = useState("");
 
   return (
     <form
-      onSubmit={handleFormSubmit({ ...props, data: { location, category } })}
+      onSubmit={handleFormSubmit({ onSetSearch, data: { location, category } })}
     >
       <h1>Search location</h1>
       <input
