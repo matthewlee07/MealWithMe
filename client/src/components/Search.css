@@ -1,0 +1,11 @@
+.search-location {
+  width: 30vw;
+}
+
+.input-group-prepend {
+  display: flex;
+  align-items: baseline;
+}
+.input-group-prepend span {
+  padding: 0.25em;
+}

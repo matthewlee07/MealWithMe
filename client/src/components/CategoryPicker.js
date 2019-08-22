@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import superagent from "superagent";
 
+function handleCategoryChange(event, categories, chooseCategory) {
+  const category = categories.find(x => x.title === event.target.value);
+  if (category !== undefined && category !== null) {
+    chooseCategory(category.alias);
+  }
+}
+
 export default function CategoryPicker(props) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -13,7 +20,9 @@ export default function CategoryPicker(props) {
         className="search-category"
         type="text"
         list="fruits"
-        onChange={e => props.chooseCategory(e.target.value)}
+        onChange={event =>
+          handleCategoryChange(event, categories, props.chooseCategory)
+        }
         placeholder="French, Japanese..."
       />
       <datalist id="fruits">

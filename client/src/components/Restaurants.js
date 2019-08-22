@@ -10,7 +10,9 @@ export default function Restaurant(props) {
 
   const restaurantsView = restaurants.map((restaurant, index) => (
     <li className="restaurant float-left p-2" key={index}>
-      <img src={restaurant.image_url} />
+      <div className="image-container">
+        <img src={restaurant.image_url} />
+      </div>
       <span>{restaurant.name}</span>
     </li>
   ));
