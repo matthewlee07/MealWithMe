@@ -24,6 +24,7 @@ export default function Search(props) {
       />
       <h2>Pick a category</h2>
       <CategoryPicker chooseCategory={chooseCategory} />
+      <input type="submit" value="Search" hidden />
     </form>
   );
 }

@@ -28,8 +28,10 @@ describe("Home page", () => {
     cy.visit("http://localhost:3001");
 
     cy.get(".search-location").type(location);
-    cy.get(".search-category").type("fast food");
-    cy.get("form").submit();
+    cy.get(".search-category")
+      .type("fast food")
+      .type("{enter}");
+    // https://docs.cypress.io/api/commands/type.html#Arguments
 
     // https://docs.cypress.io/api/commands/contains.html#Syntax
     cy.contains(`The best restaurants in ${location}`);
