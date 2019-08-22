@@ -13,7 +13,7 @@ describe("Home page", () => {
   });
   it("returns queried city", () => {
     cy.server();
-    const location = "columbus";
+    const location = "Columbus";
     const category = "fast food";
     // https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies#article
     cy.route(

@@ -14,6 +14,7 @@ export default function CategoryPicker(props) {
         type="text"
         list="fruits"
         onChange={e => props.chooseCategory(e.target.value)}
+        placeholder="French, Japanese..."
       />
       <datalist id="fruits">
         {categories.map(cat => (

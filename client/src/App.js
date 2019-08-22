@@ -16,7 +16,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <header className="App-header">Meal With Me</header>
+      {/* <header className="App-header">Meal With Me</header> */}
       <main>
         <Search onSetSearch={setSearch} />
         <Restaurant search={search} />

@@ -1,3 +1,4 @@
+import "./Restaurants.css";
 import React, { Fragment, useState, useEffect } from "react";
 import superagent from "superagent";
 
@@ -8,15 +9,19 @@ export default function Restaurant(props) {
   }, [props.search]);
 
   const restaurantsView = restaurants.map((restaurant, index) => (
-    <li className="restaurant" key={index}>
-      <span>{restaurant.name}</span>
+    <li className="restaurant float-left p-2" key={index}>
       <img src={restaurant.image_url} />
+      <span>{restaurant.name}</span>
     </li>
   ));
   return (
     <Fragment>
-      <h1>The best restaurants in {props.search.location}</h1>
-      <ul>{restaurantsView}</ul>
+      <h1>
+        The best restaurants in{" "}
+        {props.search.location.charAt(0).toUpperCase() +
+          props.search.location.slice(1) || "NYC"}
+      </h1>
+      <ul className="restaurant-container">{restaurantsView}</ul>
     </Fragment>
   );
   // }

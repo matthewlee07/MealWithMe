@@ -1,3 +1,4 @@
+import "./Search.css";
 import React, { useState } from "react";
 import CategoryPicker from "./CategoryPicker";
 
@@ -14,17 +15,28 @@ export default function Search({ onSetSearch }) {
 
   return (
     <form
-      onSubmit={handleFormSubmit({ onSetSearch, data: { location, category } })}
+      onSubmit={handleFormSubmit({
+        onSetSearch,
+        data: { location, category }
+      })}
     >
-      <h1>Search location</h1>
-      <input
-        onChange={e => changeLocation(e.target.value)}
-        type="text"
-        name="location"
-        className="search-location"
-      />
-      <h2>Pick a category</h2>
-      <CategoryPicker chooseCategory={chooseCategory} />
+      <div className="container center box mt-4">
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <span className="input-group-test ">Find</span>
+            <CategoryPicker chooseCategory={chooseCategory} />
+            <span className="input-group-test ">Near</span>
+            <input
+              onChange={e => changeLocation(e.target.value)}
+              type="text"
+              name="location"
+              className="search-location"
+              placeholder="address, neighborhood, city, state or zip"
+            />
+          </div>
+        </div>
+      </div>
+
       <input type="submit" value="Search" hidden />
     </form>
   );
