@@ -1,40 +1,31 @@
-/// <reference types="Cypress" />
-
-// https://docs.cypress.io/api/commands/get.html#Syntax
-
 describe("Home page", () => {
-  it("returns some search results", () => {
+  it("returns some restaurants", () => {
     cy.visit("http://localhost:3001");
-
-    const numberOfRestaurant = cy
-      .get(".restaurant")
+    cy.get(".restaurant-container")
       .its("length")
       .should("greaterThan", 1);
   });
-  it("returns queried city", () => {
+  it("returns queried location", () => {
+    const search = {
+      location: "NYC",
+      category: "Pizza"
+    };
     cy.server();
-    const location = "Columbus";
-    const category = "fast food";
-    // https://docs.cypress.io/guides/guides/network-requests.html#Testing-Strategies#article
     cy.route(
-      `http://localhost:3000/?location=${location}?category=${category}`,
+      `http://localhost:3000/?location=${search.location}&category=${search.category}`,
       [
         {
-          name: "A restaurant from Columbus",
+          name: `${search.location} ${search.category}`,
           image_url: "https://placekitten.com/600/600"
         }
       ]
     );
     cy.visit("http://localhost:3001");
-
-    cy.get(".search-location").type(location);
-    cy.get(".search-category")
-      .type("fast food")
+    cy.get(".location").type(`${search.location}`);
+    cy.get(".category-picker")
+      .type(`${search.category}`)
       .type("{enter}");
-    // https://docs.cypress.io/api/commands/type.html#Arguments
-
-    // https://docs.cypress.io/api/commands/contains.html#Syntax
-    cy.contains(`The best restaurants in ${location}`);
-    cy.contains("A restaurant from Columbus");
+    cy.contains(`Popular Restaurants in ${search.location}`);
+    // cy.contains(`${search.location} ${search.category}`);
   });
 });

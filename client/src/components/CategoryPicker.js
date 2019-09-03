@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import "./CategoryPicker.css";
 import superagent from "superagent";
 
-function handleCategoryChange(event, categories, chooseCategory) {
+function handleCategoryChange(event, categories, setCategory) {
   const category = categories.find(x => x.title === event.target.value);
   if (category !== undefined && category !== null) {
-    chooseCategory(category.alias);
+    setCategory(category.alias);
   }
 }
 
@@ -17,17 +18,17 @@ export default function CategoryPicker(props) {
   return (
     <div>
       <input
-        className="search-category"
+        className="category-picker"
         type="text"
-        list="fruits"
+        list="categories"
         onChange={event =>
-          handleCategoryChange(event, categories, props.chooseCategory)
+          handleCategoryChange(event, categories, props.setCategory)
         }
         placeholder="French, Japanese..."
       />
-      <datalist id="fruits">
-        {categories.map(cat => (
-          <option key={cat.alias} value={cat.title} />
+      <datalist id="categories">
+        {categories.map(category => (
+          <option key={category.alias} value={category.title} />
         ))}
       </datalist>
     </div>

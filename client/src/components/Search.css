@@ -1,11 +1,22 @@
-.search-location {
+.location {
   width: 30vw;
+  text-align: center;
 }
 
-.input-group-prepend {
-  display: flex;
-  align-items: baseline;
+.input {
+  padding: 0.2em;
 }
-.input-group-prepend span {
-  padding: 0.25em;
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+@media (min-width: 767px) {
+  * {
+    font-size: 1.05em;
+  }
+  .input {
+    font-size: 1.5em;
+  }
 }

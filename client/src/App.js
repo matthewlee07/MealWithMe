@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-
 import "./App.css";
 import Restaurant from "./components/Restaurants";
 import Search from "./components/Search";
 
-function App(props) {
+function App() {
   const [search, setSearch] = useState({
     location: "",
     category: "",
     price: "",
     rating: "",
-    url: "",
-    location: ""
+    review_count: "",
+    url: ""
   });
 
   return (
     <div className="App">
-      {/* <header className="App-header">Meal With Me</header> */}
+      {/* <header className="App-header">
+        <h1>Meal With Me</h1>
+      </header> */}
       <main>
         <Search onSetSearch={setSearch} />
         <Restaurant search={search} />
