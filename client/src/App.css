@@ -31,3 +31,8 @@ li {
   margin: 0px;
   padding: 0px;
 }
+
+.search {
+  display: flex;
+  justify-content: center;
+}
