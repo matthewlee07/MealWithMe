@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Search.css";
 import CategoryPicker from "./CategoryPicker";
+import PricePicker from "./PricePicker";
 
 function handleFormSubmit({ onSetSearch, data }) {
   return e => {
@@ -12,12 +13,13 @@ function handleFormSubmit({ onSetSearch, data }) {
 export default function Search({ onSetSearch }) {
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
 
   return (
     <form
       onSubmit={handleFormSubmit({
         onSetSearch,
-        data: { location, category }
+        data: { location, category, price }
       })}
     >
       <div className="container">
@@ -31,6 +33,7 @@ export default function Search({ onSetSearch }) {
           name="location"
           placeholder="address, neighborhood, city, state or zip"
         />
+        <PricePicker handlePriceButton={setPrice} />
       </div>
 
       <input type="submit" value="search" hidden />

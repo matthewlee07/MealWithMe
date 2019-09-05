@@ -5,10 +5,10 @@ describe("Home page", () => {
       .its("length")
       .should("greaterThan", 1);
   });
-  it("returns queried location", () => {
+  it("returns queried location and category", () => {
     const search = {
       location: "NYC",
-      category: "Pizza"
+      category: "Italian"
     };
     cy.server();
     cy.route(
@@ -26,6 +26,35 @@ describe("Home page", () => {
       .type(`${search.category}`)
       .type("{enter}");
     cy.contains(`Popular Restaurants in ${search.location}`);
-    // cy.contains(`${search.location} ${search.category}`);
+    // cy.contains(`${search.category.toLocaleLowerCase()} in ${search.location}`);
+  });
+  it("has required elements", () => {
+    cy.visit("http://localhost:3001");
+    cy.get(".name");
+    cy.get(".rating");
+    cy.get(".review_count");
+    cy.get(".price");
+    cy.get(".category");
+    cy.get(".address");
+  });
+  it("returns correct price", () => {
+    const search = {
+      location: "NYC",
+      price: "$$$"
+    };
+    cy.server();
+    cy.route(
+      `http://localhost:3000/?location=${search.location}&price=${search.price}`,
+      [
+        {
+          name: `Lux Restaurant`,
+          image_url: "https://placekitten.com/600/600"
+        }
+      ]
+    );
+    cy.visit("http://localhost:3001");
+    cy.get(".location").type(`${search.location}`);
+    cy.contains(search.price).click();
+    cy.contains(`Lux Restaurant`);
   });
 });

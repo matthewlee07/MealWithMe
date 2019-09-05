@@ -2,6 +2,31 @@ import React, { Fragment, useState, useEffect } from "react";
 import "./Restaurants.css";
 import superagent from "superagent";
 
+function renderRestaurantCategories(restaurant) {
+  const categories = restaurant.category || [];
+  return (
+    <ul className="categories">
+      {categories.map((category, index) => (
+        <li className="category" key={index}>
+          {category.title || "?Category"}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function renderRestaurantAddress(restaurant) {
+  const location = restaurant.location || {
+    address: "?Address",
+    zip_code: "?Zip Code"
+  };
+  return (
+    <li className="address">
+      {location.address1}. {location.zip_code}
+    </li>
+  );
+}
+
 export default function Restaurant(props) {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
@@ -22,18 +47,9 @@ export default function Restaurant(props) {
         <ol>
           <li className="price">{restaurant.price || "?Price"}</li>
           <span>.</span>
-          <ul className="categories">
-            {restaurant.category.map((category, index) => (
-              <li className="category" key={index}>
-                {category.title || "?Category"}
-              </li>
-            ))}
-          </ul>
+          {renderRestaurantCategories(restaurant)}
         </ol>
-        <li className="address">
-          {restaurant.location.address1 || "?Address"}.{" "}
-          {restaurant.location.zip_code || "?Zip Code"}
-        </li>
+        {renderRestaurantAddress(restaurant)}
       </ul>
     </li>
   ));
@@ -48,13 +64,23 @@ export default function Restaurant(props) {
   );
 }
 
-function getRestaurants({ search: { location, category } }) {
-  if (location === null || location.length === 0) {
+const isPresent = value => value !== null && value.length > 0;
+
+function getRestaurants({ search: { location, category, price } }) {
+  if (!isPresent(location)) {
     location = "NYC";
   }
+  const query = { location };
+  if (isPresent(price)) {
+    query["price"] = price;
+  }
+  if (isPresent(category)) {
+    query["category"] = category;
+  }
+  console.log("QUERY:", query);
   const result = superagent
     .get("http://localhost:3000")
-    .query({ location, category })
+    .query(query)
     .then(res => res.body);
   return result;
 }
