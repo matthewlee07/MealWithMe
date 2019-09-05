@@ -6,10 +6,13 @@
 .input {
   padding: 0.2em;
 }
-.container {
-  display: flex;
-  justify-content: center;
+.search-container {
   margin: 1em;
+}
+
+.primary-search,
+.secondary-search {
+  display: flex;
 }
 
 @media (min-width: 767px) {
