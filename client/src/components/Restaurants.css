@@ -22,13 +22,14 @@ li {
 
 .restaurant-information {
   text-align: left;
-  padding-left: 1.2em;
+  padding: 0 1em;
   justify-content: center;
   width: 100%;
+  font-size: 0.6em;
 }
 
 .name {
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: #0073bb;
 }
 
@@ -52,7 +53,7 @@ ol {
     font-size: 1.8em;
   }
   .image {
-    width: 240px;
+    width: 280px;
     max-height: 480px;
   }
   .name {
@@ -63,6 +64,9 @@ ol {
   }
   .restaurant-container {
     margin-left: 2em;
+  }
+  .restaurant-information {
+    font-size: 1.05em;
   }
 }
 
@@ -76,7 +80,11 @@ ol {
   }
 
   .restaurant-container {
-    margin-left: 10em;
+    margin-left: 5em;
+  }
+
+  .restaurant-information {
+    font-size: 1.25em;
   }
 }
 

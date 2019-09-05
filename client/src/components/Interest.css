@@ -1,0 +1,21 @@
+.interest-form {
+  font-size: 0.6em;
+}
+
+@media (min-width: 767px) {
+  .interest-form {
+    font-size: 1.05em;
+  }
+}
+
+@media (min-width: 1199px) {
+  .interest-form {
+    font-size: 1.25em;
+  }
+}
+
+@media (min-width: 1899px) {
+  .interest-form {
+    font-size: 1.25em;
+  }
+}
