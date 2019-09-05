@@ -5,10 +5,13 @@ class YelpRequest
       yelp_requests_path = "https://api.yelp.com/v3/businesses/search"
       # https://lostisland.github.io/faraday/usage/
       auth_header = "Bearer #{ENV['YELP_API_KEY']}"
-      query_categories = ['restaurants, All']
-      query_categories.push(category) if category.present?
+      query_category = if category.present? then
+        category
+      else
+       'restaurants, All'
+      end
 
-      query = {location: location, categories: query_categories.join(',')}
+      query = {location: location, categories: query_category}
 
       query[:price] = price.length if price.present?
       response = Faraday.get(yelp_requests_path, 
