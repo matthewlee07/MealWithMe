@@ -1,13 +1,22 @@
 .location {
-  width: 30vw;
+  width: 70vw;
   text-align: center;
+  float: left;
 }
 
-.input {
-  padding: 0.2em;
-}
 .search-container {
-  margin: 1em;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-gap: 1em;
+  width: 100%;
+  padding-left: 10%;
+  margin-top: 1em;
+}
+
+.category-prefix,
+.location-prefix {
+  margin-top: 0.1em;
+  width: 50px;
 }
 
 .primary-search,
@@ -21,5 +30,8 @@
   }
   .input {
     font-size: 1.5em;
+  }
+  .search-container {
+    padding-left: 15%;
   }
 }

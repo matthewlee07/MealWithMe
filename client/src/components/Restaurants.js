@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./Restaurants.css";
 import superagent from "superagent";
+import Interest from "./Interest";
 
 function renderRestaurantCategories(restaurant) {
   const categories = restaurant.category || [];
@@ -51,6 +52,7 @@ export default function Restaurant(props) {
         </ol>
         {renderRestaurantAddress(restaurant)}
       </ul>
+      <Interest />
     </li>
   ));
 

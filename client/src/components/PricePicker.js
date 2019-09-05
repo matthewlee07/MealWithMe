@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import "./PricePicker.css";
 
 export default function PricePicker({ handlePriceButton }) {
   const prices = ["$", "$$", "$$$", "$$$$"];
@@ -8,7 +9,7 @@ export default function PricePicker({ handlePriceButton }) {
       key={price}
       type="submit"
       onClick={e => handlePriceButton(e.target.innerText)}
-      className={`price-picker-${price}`}
+      className={`price-picker price-picker-${price}`}
     >
       {price}
     </button>

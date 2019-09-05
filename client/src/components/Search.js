@@ -22,10 +22,10 @@ export default function Search({ onSetSearch }) {
         data: { location, category, price }
       })}
     >
-      <div className="container">
-        <span className="input">Find</span>
+      <div className="search-container">
+        <span className="category-prefix">Find</span>
         <CategoryPicker setCategory={setCategory} />
-        <span className="input">Near</span>
+        <span className="location-prefix">Near</span>
         <input
           type="text"
           className="location"
@@ -33,8 +33,8 @@ export default function Search({ onSetSearch }) {
           name="location"
           placeholder="address, neighborhood, city, state or zip"
         />
-        <PricePicker handlePriceButton={setPrice} />
       </div>
+      <PricePicker handlePriceButton={setPrice} />
 
       <input type="submit" value="search" hidden />
     </form>
