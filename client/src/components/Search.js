@@ -19,25 +19,21 @@ export default function Search({ onSetSearch }) {
     <form
       onSubmit={handleFormSubmit({
         onSetSearch,
-        data: { location, category }
+        data: { location, category, price }
       })}
     >
-      <div className="search-container">
-        <div className="primary-search">
-          <span className="input">Find</span>
-          <CategoryPicker setCategory={setCategory} />
-          <span className="input">Near</span>
-          <input
-            type="text"
-            className="location"
-            onChange={e => setLocation(e.target.value)}
-            name="location"
-            placeholder="address, neighborhood, city, state or zip"
-          />
-        </div>
-        <div className="secondary-search">
-          {/* <PricePicker setPrice={setPrice} /> */}
-        </div>
+      <div className="container">
+        <span className="input">Find</span>
+        <CategoryPicker setCategory={setCategory} />
+        <span className="input">Near</span>
+        <input
+          type="text"
+          className="location"
+          onChange={e => setLocation(e.target.value)}
+          name="location"
+          placeholder="address, neighborhood, city, state or zip"
+        />
+        <PricePicker handlePriceButton={setPrice} />
       </div>
 
       <input type="submit" value="search" hidden />

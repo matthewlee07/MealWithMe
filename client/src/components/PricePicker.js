@@ -1,25 +1,17 @@
-import React from "react";
-import "./PricePicker.css";
-function handlePriceButton() {
-  console.log("clicked");
-}
+import React, { Fragment } from "react";
 
-export default function PricePicker() {
-  return (
-    <div className="price-picker">
-      <button onClick={handlePriceButton} className="price-1">
-        $
-      </button>
-      <button onClick={handlePriceButton} className="price-2">
-        $$
-      </button>
-      <button onClick={handlePriceButton} className="price-3">
-        $$$
-      </button>
-      <button onClick={handlePriceButton} className="price-4">
-        $$$$
-      </button>
-    </div>
-  );
-  // pass button component $, $$, $$$, $$$$
+export default function PricePicker({ handlePriceButton }) {
+  const prices = ["$", "$$", "$$$", "$$$$"];
+
+  const buttons = prices.map(price => (
+    <button
+      key={price}
+      type="submit"
+      onClick={e => handlePriceButton(e.target.innerText)}
+      className={`price-picker-${price}`}
+    >
+      {price}
+    </button>
+  ));
+  return <Fragment>{buttons}</Fragment>;
 }

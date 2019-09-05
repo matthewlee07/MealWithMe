@@ -1,8 +1,8 @@
 require 'yelp_request'
 class HomeController < ApplicationController
   def index
-    response = YelpRequest.new.search(params.require(:location), params[:category])
-      data = JSON.parse(response.body)["businesses"].map do |business|
+    response = YelpRequest.new.search(params.require(:location), params[:category], params[:price])
+      data = response.body.map do |business|
         {
           id: business["id"], 
           name: business["name"],

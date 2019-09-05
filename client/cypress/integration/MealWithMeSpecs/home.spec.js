@@ -37,13 +37,24 @@ describe("Home page", () => {
     cy.get(".category");
     cy.get(".address");
   });
-  it("applies price filter", () => {
+  it("returns correct price", () => {
     const search = {
       location: "NYC",
       price: "$$$"
     };
+    cy.server();
+    cy.route(
+      `http://localhost:3000/?location=${search.location}&price=${search.price}`,
+      [
+        {
+          name: `Lux Restaurant`,
+          image_url: "https://placekitten.com/600/600"
+        }
+      ]
+    );
     cy.visit("http://localhost:3001");
     cy.get(".location").type(`${search.location}`);
-    cy.get(".price-3").click();
+    cy.contains(search.price).click();
+    cy.contains(`Lux Restaurant`);
   });
 });
