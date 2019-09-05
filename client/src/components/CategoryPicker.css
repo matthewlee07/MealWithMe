@@ -1,3 +1,7 @@
+.category-picker {
+  float: left;
+}
+
 @media (min-width: 767px) {
   .category-picker {
     padding: 0.5em;
