@@ -35,3 +35,27 @@
     padding-left: 15%;
   }
 }
+
+@media (min-width: 1199px) {
+  .category-prefix,
+  .location-prefix {
+    margin-top: 0.5em;
+  }
+  .category-picker,
+  .location {
+    margin: 0 1em;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
+  }
+  .location {
+    width: 35vw;
+  }
+}
+
+@media (min-width: 1899px) {
+  .location {
+    width: 25vw;
+  }
+}
