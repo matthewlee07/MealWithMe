@@ -9,7 +9,7 @@ function handleCategoryChange(event, categories, setCategory) {
   }
 }
 
-export default function CategoryPicker(props) {
+export default function CategoryPicker({ setCategory }) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     getCategories().then(setCategories);
@@ -21,9 +21,7 @@ export default function CategoryPicker(props) {
         className="category-picker"
         type="text"
         list="categories"
-        onChange={event =>
-          handleCategoryChange(event, categories, props.setCategory)
-        }
+        onChange={event => handleCategoryChange(event, categories, setCategory)}
         placeholder="French, Japanese..."
       />
       <datalist id="categories">

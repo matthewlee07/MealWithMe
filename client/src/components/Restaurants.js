@@ -28,11 +28,11 @@ function renderRestaurantAddress(restaurant) {
   );
 }
 
-export default function Restaurant(props) {
+export default function Restaurant({ search }) {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
-    getRestaurants(props).then(setRestaurants);
-  }, [props.search]);
+    getRestaurants(search).then(setRestaurants);
+  }, [search]);
 
   const restaurantsView = restaurants.map((restaurant, index) => (
     <li className="restaurant-container" key={index}>
@@ -59,7 +59,7 @@ export default function Restaurant(props) {
   return (
     <Fragment>
       <h1 className="title">
-        Popular Restaurants in {props.search.location || "NYC"}
+        Popular Restaurants in {search.location || "NYC"}
       </h1>
       <ul>{restaurantsView}</ul>
     </Fragment>
@@ -68,7 +68,7 @@ export default function Restaurant(props) {
 
 const isPresent = value => value !== null && value.length > 0;
 
-function getRestaurants({ search: { location, category, price } }) {
+function getRestaurants({ location, category, price }) {
   if (!isPresent(location)) {
     location = "NYC";
   }
