@@ -21,13 +21,10 @@
 
 li {
   list-style: none;
-  margin: 0.2em;
 }
 
 .restaurant-information {
   text-align: left;
-  padding: 0 1em;
-  width: 100%;
   font-size: 0.6em;
   border: 1px solid blue;
 }
@@ -52,48 +49,38 @@ ol {
   padding: 0;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .title {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
   .image {
-    width: 280px;
+    width: 180px;
     max-height: 480px;
   }
   .name {
     font-size: 1.5em;
   }
-  ol {
-    margin: 0.5em 0;
-  }
-  .restaurant-container {
-    margin-left: 2em;
-  }
   .restaurant-information {
-    font-size: 1.05em;
+    font-size: 0.75em;
   }
 }
 
-@media (min-width: 1199px) {
+@media (min-width: 1200px) {
+  .restaurant-container {
+    margin: 0 2.5em 0 5em;
+  }
   .title {
     font-size: 2em;
   }
   .image {
-    width: 350px;
+    width: 270px;
     max-height: 720px;
   }
-
-  .restaurant-container {
-    margin-left: 5em;
+  .name {
+    font-size: 1.8em;
   }
 
   .restaurant-information {
-    font-size: 1.25em;
-  }
-}
-
-@media (min-width: 1899px) {
-  .restaurant-container {
-    margin-left: 15em;
+    font-size: 1.1em;
   }
 }
