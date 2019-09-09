@@ -79,7 +79,6 @@ function getRestaurants({ location, category, price }) {
   if (isPresent(category)) {
     query["category"] = category;
   }
-  console.log("QUERY:", query);
   const result = superagent
     .get("http://localhost:3000")
     .query(query)
