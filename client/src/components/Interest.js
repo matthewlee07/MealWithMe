@@ -1,33 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Interest.css";
 import Form from "./InterestForm";
 import List from "./InterestList";
 
-const initialInterests = [
-  {
-    min_seats: 4,
-    max_seats: 8,
-    datetime: "12/12 12:12"
-  },
-  {
-    min_seats: 2,
-    max_seats: 4,
-    datetime: "1/1/2021 11:12"
-  },
-  {
-    min_seats: 20,
-    max_seats: 40,
-    datetime: "2/20 20:20"
-  }
-];
+const initialInterests = localStorage.getItem("interests")
+  ? JSON.parse(localStorage.getItem("interests"))
+  : [];
 
 const Interest = () => {
   const [interests, setInterests] = useState(initialInterests);
+  const [minSeats, setMinSeats] = useState(2);
+  const [maxSeats, setMaxSeats] = useState(12);
+  const [datetime, setDatetime] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("interests", JSON.stringify(interests));
+  }, [interests]);
+
+  const handleMinSeats = e => {
+    setMinSeats(e.target.value);
+  };
+  const handleMaxSeats = e => {
+    setMaxSeats(e.target.value);
+  };
+  const handleDatetime = e => {
+    setDatetime(e.target.value);
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const singleInterest = {
+      minSeats,
+      maxSeats,
+      datetime
+    };
+    setInterests([...interests, singleInterest]);
+    setMinSeats("");
+    setMaxSeats("");
+    setDatetime("");
+  };
 
   return (
     <div className="interest">
       <List interests={interests} />
-      <Form />
+      <Form
+        minSeats={minSeats}
+        handleMinSeats={handleMinSeats}
+        maxSeats={maxSeats}
+        handleMaxSeats={handleMaxSeats}
+        datetime={datetime}
+        handleDatetime={handleDatetime}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };
