@@ -1,5 +1,4 @@
 import React from "react";
-import "./InterestItem.css";
 
 const InterestItem = ({ interest }) => {
   const { minSeats, maxSeats, datetime } = interest;

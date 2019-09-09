@@ -17,6 +17,7 @@ export default function Search({ onSetSearch }) {
 
   return (
     <form
+      className="search-form"
       onSubmit={handleFormSubmit({
         onSetSearch,
         data: { location, category, price }

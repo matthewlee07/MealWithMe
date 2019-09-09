@@ -45,8 +45,7 @@ const InterestForm = ({
         value={datetime}
         onChange={handleDatetime}
       />
-      <hr />
-      <p>change to dropdown, 2-12 people, use a calendar library</p>
+      {/* TODO: change to dropdown, 2-12 people, use a calendar library */}
       <button type="submit">Submit</button>
     </form>
   );

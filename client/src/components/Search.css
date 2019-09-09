@@ -1,3 +1,6 @@
+.search-form {
+  background-color: #f5f5f5;
+}
 .location {
   width: 70vw;
   text-align: center;
@@ -10,7 +13,7 @@
   grid-gap: 1em;
   width: 100%;
   padding-left: 10%;
-  margin-top: 1em;
+  padding-top: 1em;
 }
 
 .category-prefix,
