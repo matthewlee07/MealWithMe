@@ -7,7 +7,7 @@ const initialInterests = localStorage.getItem("interests")
   ? JSON.parse(localStorage.getItem("interests"))
   : [];
 
-const Interest = () => {
+const Interest = ({ YELP_ID }) => {
   const [interests, setInterests] = useState(initialInterests);
   const [minSeats, setMinSeats] = useState(2);
   const [maxSeats, setMaxSeats] = useState(12);
@@ -34,6 +34,7 @@ const Interest = () => {
       maxSeats,
       datetime
     };
+
     setInterests([...interests, singleInterest]);
     setMinSeats("");
     setMaxSeats("");
@@ -44,6 +45,7 @@ const Interest = () => {
     <div className="interest">
       <List interests={interests} />
       <Form
+        YELP_ID={YELP_ID}
         minSeats={minSeats}
         handleMinSeats={handleMinSeats}
         maxSeats={maxSeats}

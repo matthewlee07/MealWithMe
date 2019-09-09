@@ -52,7 +52,7 @@ export default function Restaurant({ search }) {
         </ol>
         {renderRestaurantAddress(restaurant)}
       </ul>
-      <Interest />
+      <Interest YELP_ID={restaurants[index].id} />
     </li>
   ));
 

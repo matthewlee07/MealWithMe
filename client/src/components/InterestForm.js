@@ -1,6 +1,7 @@
 import React from "react";
 
 const InterestForm = ({
+  YELP_ID,
   minSeats,
   handleMinSeats,
   maxSeats,
@@ -11,6 +12,16 @@ const InterestForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
+      <span>{YELP_ID}</span>
+      {/* <select>
+        {Array.from({ length: 11 }).map((opt, i) => (
+          <option
+            key={i}
+          >
+            {i + 2}
+          </option>
+        ))}
+      </select> */}
       <input
         type="number"
         name="minSeats"
