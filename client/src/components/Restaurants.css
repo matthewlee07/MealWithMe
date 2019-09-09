@@ -61,9 +61,7 @@ ol {
     max-height: 480px;
   }
   .restaurant-container {
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: 0.5em;
+    margin: 0 2em 0.5em 2em;
     border-radius: 8px;
   }
   .name {
@@ -71,12 +69,14 @@ ol {
   }
   .restaurant-information {
     font-size: 0.75em;
+    padding-left: 0;
   }
 }
 
 @media (min-width: 1200px) {
   .restaurant-container {
-    margin: 0 2.5em 0 5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
   }
   .title {
     font-size: 2em;
