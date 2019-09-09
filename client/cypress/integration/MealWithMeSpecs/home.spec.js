@@ -57,18 +57,18 @@ describe("Home page", () => {
     cy.contains(search.price).click();
     cy.contains(`Lux Restaurant`);
   });
-  it("starts interest list", () => {
-    cy.server();
-    cy.route(`http://localhost:3000/*`, [
-      {
-        name: "A not interesting restaurant",
-        image_url: "https://placekitten.com/1600/1600"
-      }
-    ]);
-    cy.visit("http://localhost:3001");
+  // it("starts interest list", () => {
+  //   cy.server();
+  //   cy.route(`http://localhost:3000/*`, [
+  //     {
+  //       name: "A not interesting restaurant",
+  //       image_url: "https://placekitten.com/1600/1600"
+  //     }
+  //   ]);
+  //   cy.visit("http://localhost:3001");
 
-    cy.get(".interest-form .number-of-people").type("5");
-    cy.get(".interest-form .date").type("2030-01-01");
-    cy.get(".interest-form .create-interest").click();
-  });
+  //   cy.get(".interest-form .number-of-people").type("5");
+  //   cy.get(".interest-form .date").type("2030-01-01");
+  //   cy.get(".interest-form .create-interest").click();
+  // });
 });
