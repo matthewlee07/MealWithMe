@@ -44,7 +44,7 @@ const Interest = ({ YELP_ID }) => {
   return (
     <div className="wrap-collapsible interest-container">
       <input id="collapsible" className="toggle" type="checkbox" />
-      <label for="collapsible" className="lbl-toggle">
+      <label htmlFor="collapsible" className="lbl-toggle">
         Meal With Me
       </label>
       <div className="collapsible-content">

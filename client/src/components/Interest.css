@@ -90,19 +90,25 @@ input[type="checkbox"] {
   border-radius: 4px;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .interest-form {
     font-size: 1.05em;
   }
-}
-
-@media (min-width: 1199px) {
-  .interest-form {
-    font-size: 1.25em;
+  .lbl-toggle {
+    font-size: 1.5em;
   }
 }
 
-@media (min-width: 1899px) {
+@media (min-width: 1200px) {
+  .interest-form {
+    font-size: 1.25em;
+  }
+  .lbl-toggle {
+    font-size: 2.5em;
+  }
+}
+
+@media (min-width: 1900px) {
   .interest-form {
     font-size: 1.25em;
   }
