@@ -1,7 +1,7 @@
 import React from "react";
 
 const InterestForm = ({
-  YELP_ID,
+  // YELP_ID,
   minSeats,
   handleMinSeats,
   maxSeats,
@@ -15,6 +15,7 @@ const InterestForm = ({
       {/* <span>{YELP_ID}</span> */}
       <div className="interest-input-seats">
         <select
+          className="select-minSeats"
           name="minSeats"
           value={minSeats}
           onChange={handleMinSeats}
@@ -35,6 +36,7 @@ const InterestForm = ({
         </select>
         <span> to </span>
         <select
+          className="select-maxSeats"
           name="maxSeats"
           value={maxSeats}
           onChange={handleMaxSeats}

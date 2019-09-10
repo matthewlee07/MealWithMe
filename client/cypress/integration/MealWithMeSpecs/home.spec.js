@@ -62,12 +62,29 @@ describe("Home page", () => {
     cy.route(`http://localhost:3000/*`, [
       {
         name: "A not interesting restaurant",
+        id: "123",
         image_url: "https://placekitten.com/1600/1600"
       }
     ]);
     cy.visit("http://localhost:3001");
-    // cy.get(".interest-form .minSeats").type("5");
-    // cy.get(".interest-form .date").type("2030-01-01");
-    // cy.get(".interest-form .create-interest").click();
+    cy.contains("A not interesting restaurant");
+    cy.get(".lbl-toggle").click();
+
+    cy.route("POST", `http://localhost:3000/123/interests`, [
+      {
+        minSeats: 4,
+        maxSeats: 8
+      },
+      {
+        minSeats: 6,
+        maxSeats: 10
+      }
+    ]);
+    cy.get(".interest-form .select-minSeats").select("4");
+    cy.get(".interest-form .select-maxSeats").select("8");
+    cy.get(".submit").click();
+
+    cy.contains("4 - 8 seats");
+    cy.contains("6 - 10 seats");
   });
 });
