@@ -2,10 +2,10 @@ import React from "react";
 
 const InterestForm = ({
   // YELP_ID,
-  minSeats,
-  handleMinSeats,
-  maxSeats,
-  handleMaxSeats,
+  min_seats,
+  handleMin_seats,
+  max_seats,
+  handleMax_seats,
   datetime,
   handleDatetime,
   handleSubmit
@@ -15,10 +15,10 @@ const InterestForm = ({
       {/* <span>{YELP_ID}</span> */}
       <div className="interest-input-seats">
         <select
-          className="select-minSeats"
-          name="minSeats"
-          value={minSeats}
-          onChange={handleMinSeats}
+          className="select-min_seats"
+          name="min_seats"
+          value={min_seats}
+          onChange={handleMin_seats}
           placeholder="4"
         >
           {/* how to map over an array to omit this stupidness? and set default to X value */}
@@ -36,10 +36,10 @@ const InterestForm = ({
         </select>
         <span> to </span>
         <select
-          className="select-maxSeats"
-          name="maxSeats"
-          value={maxSeats}
-          onChange={handleMaxSeats}
+          className="select-max_seats"
+          name="max_seats"
+          value={max_seats}
+          onChange={handleMax_seats}
           placeholder="8"
         >
           <option value="2">2</option>

@@ -70,21 +70,43 @@ describe("Home page", () => {
     cy.contains("A not interesting restaurant");
     cy.get(".lbl-toggle").click();
 
-    cy.route("POST", `http://localhost:3000/123/interests`, [
+    cy.route("POST", `http://localhost:3000/interests`, [
       {
-        minSeats: 4,
-        maxSeats: 8
+        min_seats: 4,
+        max_seats: 8
       },
       {
-        minSeats: 6,
-        maxSeats: 10
+        min_seats: 6,
+        max_seats: 10
       }
     ]);
-    cy.get(".interest-form .select-minSeats").select("4");
-    cy.get(".interest-form .select-maxSeats").select("8");
+    cy.get(".interest-form .select-min_seats").select("4");
+    cy.get(".interest-form .select-max_seats").select("8");
     cy.get(".submit").click();
 
     cy.contains("4 - 8 seats");
     cy.contains("6 - 10 seats");
+  });
+  it("renders initial interest", () => {
+    cy.server();
+    cy.route(`http://localhost:3000/*`, [
+      {
+        name: "A not interesting restaurant",
+        id: "123",
+        image_url: "https://placekitten.com/1600/1600",
+        interests: [
+          {
+            min_seats: 7,
+            max_seats: 9,
+            datetime: "2019-12-12T12:12:00.000Z"
+          }
+        ]
+      }
+    ]);
+    cy.visit("http://localhost:3001");
+    cy.contains("A not interesting restaurant");
+    cy.get(".lbl-toggle").click();
+
+    cy.contains("7 - 9 seats");
   });
 });

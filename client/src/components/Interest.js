@@ -4,22 +4,21 @@ import Form from "./InterestForm";
 import List from "./InterestList";
 import superagent from "superagent";
 
-const initialInterests = localStorage.getItem("interests")
-  ? JSON.parse(localStorage.getItem("interests"))
-  : [];
-
-const Interest = ({ YELP_ID }) => {
+const Interest = ({ YELP_ID, initialInterests }) => {
   const [interests, setInterests] = useState(initialInterests);
   const [clientInterests, setClientInterests] = useState([]);
-  const [minSeats, setMinSeats] = useState(2);
-  const [maxSeats, setMaxSeats] = useState(12);
+  const [min_seats, setMin_seats] = useState(2);
+  const [max_seats, setMax_seats] = useState(12);
   const [datetime, setDatetime] = useState("");
 
   useEffect(() => {
     if (clientInterests.length > 0) {
       superagent
-        .post(`http://localhost:3000/${YELP_ID}/interests`)
-        .send(clientInterests)
+        .post(`http://localhost:3000/interests`)
+        .send({
+          yelp_id: YELP_ID,
+          interests: clientInterests
+        })
         .then(res => {
           setInterests(res.body);
           setClientInterests([]);
@@ -27,11 +26,11 @@ const Interest = ({ YELP_ID }) => {
     }
   }, [clientInterests]);
 
-  const handleMinSeats = e => {
-    setMinSeats(e.target.value);
+  const handleMin_seats = e => {
+    setMin_seats(e.target.value);
   };
-  const handleMaxSeats = e => {
-    setMaxSeats(e.target.value);
+  const handleMax_seats = e => {
+    setMax_seats(e.target.value);
   };
   const handleDatetime = e => {
     setDatetime(e.target.value);
@@ -40,14 +39,14 @@ const Interest = ({ YELP_ID }) => {
     e.preventDefault();
 
     const singleInterest = {
-      minSeats,
-      maxSeats,
+      min_seats,
+      max_seats,
       datetime
     };
 
     setClientInterests([...clientInterests, singleInterest]);
-    setMinSeats("");
-    setMaxSeats("");
+    setMin_seats("");
+    setMax_seats("");
     setDatetime("");
   };
 
@@ -62,10 +61,10 @@ const Interest = ({ YELP_ID }) => {
         <List interests={allInterests} />
         <Form
           // YELP_ID={YELP_ID}
-          minSeats={minSeats}
-          handleMinSeats={handleMinSeats}
-          maxSeats={maxSeats}
-          handleMaxSeats={handleMaxSeats}
+          min_seats={min_seats}
+          handleMin_seats={handleMin_seats}
+          max_seats={max_seats}
+          handleMax_seats={handleMax_seats}
           datetime={datetime}
           handleDatetime={handleDatetime}
           handleSubmit={handleSubmit}
