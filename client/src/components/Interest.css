@@ -5,7 +5,7 @@
 }
 
 .interest-input-seats > input {
-  width: 20px;
+  width: 35px;
   border: 1px solid #0073bb;
 }
 .interest-input-datetime > input {
@@ -13,11 +13,21 @@
   border: 1px solid #0073bb;
 }
 
+.interest-item {
+  display: grid;
+  border-bottom: 1px solid #0073bb;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .interest-item > .submit,
 .interest-form > .submit {
   border: 1px solid #0073bb;
   border-radius: 4px;
   margin-left: 1em;
+}
+
+.join {
+  width: 60%;
 }
 
 input[type="checkbox"] {

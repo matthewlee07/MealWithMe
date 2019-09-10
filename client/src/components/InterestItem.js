@@ -4,9 +4,11 @@ const InterestItem = ({ interest }) => {
   const { minSeats, maxSeats, datetime } = interest;
   return (
     <li className="interest-item">
-      <span>{minSeats}</span> / <span>{maxSeats}</span> seats on
-      <span>{datetime}</span>
-      <button type="submit" className="submit">
+      <span>
+        {minSeats} - {maxSeats} seats
+      </span>
+      <span> {datetime}</span>
+      <button type="submit" className="submit join">
         Join
       </button>
     </li>

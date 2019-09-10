@@ -13,31 +13,45 @@ const InterestForm = ({
   return (
     <form onSubmit={handleSubmit} className="interest-form">
       {/* <span>{YELP_ID}</span> */}
-      {/* <select>
-        {Array.from({ length: 11 }).map((opt, i) => (
-          <option
-            key={i}
-          >
-            {i + 2}
-          </option>
-        ))}
-      </select> */}
       <div className="interest-input-seats">
-        <input
-          type="number"
+        <select
           name="minSeats"
-          placeholder="2"
           value={minSeats}
           onChange={handleMinSeats}
-        />
+          placeholder="4"
+        >
+          {/* how to map over an array to omit this stupidness? and set default to X value */}
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
         <span> to </span>
-        <input
-          type="number"
+        <select
           name="maxSeats"
-          placeholder="10"
           value={maxSeats}
           onChange={handleMaxSeats}
-        />
+          placeholder="8"
+        >
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
         <span> seats. </span>
       </div>
       <div className="interest-input-datetime">
