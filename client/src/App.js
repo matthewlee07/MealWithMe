@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Restaurant from "./components/Restaurants";
 import Search from "./components/Search";
+import Notes from "./components/Notes";
 
 function uuidv4() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
@@ -29,21 +30,25 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <h1>Meal With Me</h1>
-        <p className="cta">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-          temporibus culpa qui aspernatur quo! Ab repudiandae aspernatur fuga
-          voluptatum adipisci obcaecati earum aut impedit! Facilis laborum
-          perspiciatis nesciunt id rem.
-        </p>
-      </header> */}
+      <header className="App-header">
+        <section className="project-name">
+          <h1>Meal With Me</h1>
+          <h5 className="cta">Feast With New Friends</h5>
+        </section>
+        <section>
+          <p>insert gif of using app...</p>
+          <h3>Join an existing party or start your own!</h3>
+        </section>
+      </header>
       <main>
         <span className="search">
           <Search onSetSearch={setSearch} />
         </span>
         <Restaurant search={search} />
       </main>
+      <footer>
+        <Notes />
+      </footer>
     </div>
   );
 }
