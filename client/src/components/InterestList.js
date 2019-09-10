@@ -4,7 +4,7 @@ import Item from "./InterestItem";
 const InterestList = ({ interests }) => {
   return (
     <>
-      <ul className="list">
+      <ul className="interest-list">
         {interests.map((interest, index) => {
           return <Item key={index} interest={interest} />;
         })}

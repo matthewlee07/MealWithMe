@@ -42,18 +42,24 @@ const Interest = ({ YELP_ID }) => {
   };
 
   return (
-    <div className="interest">
-      <List interests={interests} />
-      <Form
-        YELP_ID={YELP_ID}
-        minSeats={minSeats}
-        handleMinSeats={handleMinSeats}
-        maxSeats={maxSeats}
-        handleMaxSeats={handleMaxSeats}
-        datetime={datetime}
-        handleDatetime={handleDatetime}
-        handleSubmit={handleSubmit}
-      />
+    <div className="wrap-collapsible interest-container">
+      <input id="collapsible" className="toggle" type="checkbox" />
+      <label for="collapsible" className="lbl-toggle">
+        Meal With Me
+      </label>
+      <div className="collapsible-content">
+        <List interests={interests} />
+        <Form
+          YELP_ID={YELP_ID}
+          minSeats={minSeats}
+          handleMinSeats={handleMinSeats}
+          maxSeats={maxSeats}
+          handleMaxSeats={handleMaxSeats}
+          datetime={datetime}
+          handleDatetime={handleDatetime}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </div>
   );
 };

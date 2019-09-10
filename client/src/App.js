@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <h1>Meal With Me</h1>
         <p className="cta">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
@@ -37,7 +37,7 @@ function App() {
           voluptatum adipisci obcaecati earum aut impedit! Facilis laborum
           perspiciatis nesciunt id rem.
         </p>
-      </header>
+      </header> */}
       <main>
         <span className="search">
           <Search onSetSearch={setSearch} />

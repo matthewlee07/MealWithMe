@@ -11,8 +11,8 @@ const InterestForm = ({
   handleSubmit
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <span>{YELP_ID}</span>
+    <form onSubmit={handleSubmit} className="interest-form">
+      {/* <span>{YELP_ID}</span> */}
       {/* <select>
         {Array.from({ length: 11 }).map((opt, i) => (
           <option
@@ -22,31 +22,38 @@ const InterestForm = ({
           </option>
         ))}
       </select> */}
-      <input
-        type="number"
-        name="minSeats"
-        placeholder="2"
-        value={minSeats}
-        onChange={handleMinSeats}
-      />
-      <span> to </span>
-      <input
-        type="number"
-        name="maxSeats"
-        placeholder="10"
-        value={maxSeats}
-        onChange={handleMaxSeats}
-      />
-      <span> seats. On </span>
-      <input
-        type="string"
-        name="datetime"
-        placeholder="12/12 12:12"
-        value={datetime}
-        onChange={handleDatetime}
-      />
+      <div className="interest-input-seats">
+        <input
+          type="number"
+          name="minSeats"
+          placeholder="2"
+          value={minSeats}
+          onChange={handleMinSeats}
+        />
+        <span> to </span>
+        <input
+          type="number"
+          name="maxSeats"
+          placeholder="10"
+          value={maxSeats}
+          onChange={handleMaxSeats}
+        />
+        <span> seats. </span>
+      </div>
+      <div className="interest-input-datetime">
+        <span>On </span>
+        <input
+          type="string"
+          name="datetime"
+          placeholder="12/12 12:12"
+          value={datetime}
+          onChange={handleDatetime}
+        />
+      </div>
       {/* TODO: change to dropdown, 2-12 people, use a calendar library */}
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit">
+        Submit
+      </button>
     </form>
   );
 };
