@@ -40,7 +40,7 @@ export default function Restaurant({ search }) {
       <ul className="restaurant-information">
         <li className="name">{restaurant.name || "?Name"}</li>
         <ol>
-          <li className="rating">{restaurant.rating || "?Rating"}/5</li>
+          <li className="rating">{restaurant.rating || "?Rating"}/5 </li>
           <li className="review_count">
             in {restaurant.review_count || "?Number of"} reviews
           </li>

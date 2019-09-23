@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <section className="project-name">
           <h1>Meal With Me</h1>
           <h5 className="cta">Feast With New Friends</h5>
@@ -39,7 +39,7 @@ function App() {
           <p>insert gif of using app...</p>
           <h3>Join an existing party or start your own!</h3>
         </section>
-      </header>
+      </header> */}
       <main>
         <span className="search">
           <Search onSetSearch={setSearch} />

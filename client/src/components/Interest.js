@@ -4,12 +4,16 @@ import Form from "./InterestForm";
 import List from "./InterestList";
 import superagent from "superagent";
 
+const DEFAULT_MIN_SEAT = "2";
+const DEFAULT_MAX_SEAT = "2";
+const DEFAULT_DATE = new Date().toISOString();
+
 const Interest = ({ YELP_ID, initialInterests }) => {
-  const [interests, setInterests] = useState(initialInterests);
+  const [interests, setInterests] = useState(initialInterests || []);
   const [clientInterests, setClientInterests] = useState([]);
-  const [min_seats, setMin_seats] = useState(2);
-  const [max_seats, setMax_seats] = useState(12);
-  const [datetime, setDatetime] = useState("");
+  const [min_seats, setMin_seats] = useState(DEFAULT_MIN_SEAT);
+  const [max_seats, setMax_seats] = useState(DEFAULT_MAX_SEAT);
+  const [datetime, setDatetime] = useState(DEFAULT_DATE);
 
   useEffect(() => {
     if (clientInterests.length > 0) {
@@ -21,6 +25,8 @@ const Interest = ({ YELP_ID, initialInterests }) => {
         })
         .then(res => {
           setInterests(res.body);
+        })
+        .finally(() => {
           setClientInterests([]);
         });
     }
@@ -45,9 +51,9 @@ const Interest = ({ YELP_ID, initialInterests }) => {
     };
 
     setClientInterests([...clientInterests, singleInterest]);
-    setMin_seats("");
-    setMax_seats("");
-    setDatetime("");
+    setMin_seats(DEFAULT_MIN_SEAT);
+    setMax_seats(DEFAULT_MAX_SEAT);
+    setDatetime(DEFAULT_DATE);
   };
 
   const allInterests = interests.concat(clientInterests);
