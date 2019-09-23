@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const InterestForm = ({
   // YELP_ID,
@@ -10,6 +13,8 @@ const InterestForm = ({
   handleDatetime,
   handleSubmit
 }) => {
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <form onSubmit={handleSubmit} className="interest-form">
       {/* <span>{YELP_ID}</span> */}
@@ -19,7 +24,6 @@ const InterestForm = ({
           name="min_seats"
           value={min_seats}
           onChange={handleMin_seats}
-          placeholder="4"
         >
           {/* how to map over an array to omit this stupidness? and set default to X value */}
           <option value="2">2</option>
@@ -40,7 +44,6 @@ const InterestForm = ({
           name="max_seats"
           value={max_seats}
           onChange={handleMax_seats}
-          placeholder="8"
         >
           <option value="2">2</option>
           <option value="3">3</option>
@@ -56,7 +59,18 @@ const InterestForm = ({
         </select>
         <span> seats. </span>
       </div>
-      <div className="interest-input-datetime">
+      <DatePicker
+        selected={startDate}
+        onChange={date => setStartDate(date)}
+        showTimeSelect
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        timeCaption="time"
+        dateFormat="MMMM d, yyyy h:mm aa"
+        name="datetime"
+        value={datetime}
+      />
+      {/* <div className="interest-input-datetime">
         <span>On </span>
         <input
           type="string"
@@ -65,8 +79,7 @@ const InterestForm = ({
           value={datetime}
           onChange={handleDatetime}
         />
-      </div>
-      {/* TODO: change to dropdown, 2-12 people, use a calendar library */}
+      </div> */}
       <button type="submit" className="submit">
         Submit
       </button>

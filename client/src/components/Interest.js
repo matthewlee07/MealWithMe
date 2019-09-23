@@ -4,8 +4,8 @@ import Form from "./InterestForm";
 import List from "./InterestList";
 import superagent from "superagent";
 
-const DEFAULT_MIN_SEAT = "2";
-const DEFAULT_MAX_SEAT = "2";
+const DEFAULT_MIN_SEAT = "4";
+const DEFAULT_MAX_SEAT = "8";
 const DEFAULT_DATE = new Date().toISOString();
 
 const Interest = ({ YELP_ID, initialInterests }) => {
@@ -66,7 +66,6 @@ const Interest = ({ YELP_ID, initialInterests }) => {
       <div className="collapsible-content">
         <List interests={allInterests} />
         <Form
-          // YELP_ID={YELP_ID}
           min_seats={min_seats}
           handleMin_seats={handleMin_seats}
           max_seats={max_seats}
